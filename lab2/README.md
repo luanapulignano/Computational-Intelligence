@@ -12,3 +12,8 @@ In Lab 2, we implemented a solution using the evolutionary strategy (1+lambda). 
 
 -Main Evolutionary Strategy (es) Function:
  The es function serves as the main strategy. It involves generating, ordering, and   producing lambda children by selecting the best parent. Additionally, the function counts   the number of fitness calls to dynamically adapt the sigma value. Finally, the worst parent  from the previous population is replaced with the children. The function concludes by   returning the best individual from the latest generation.
+
+ Review recieved from: Andrea Pellegrino s309855
+ Rewiew done to: Salvatore Tilocca s305938, Francesca Zafonte s319331
+
+ After the the review recieved the code has been updated and the errors corrected
