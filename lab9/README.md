@@ -14,18 +14,18 @@ The main function uses a counter to track how many times the same max fitness va
 Results:    
     -POPULATION_SIZE= 100 , OFFSPRING_SIZE=20
         -PROBLEM_DIMENSION = 1:
-            -fitness_calls: 47060
-            -num_of_generations: 2348
-            -best_fit_individual: 0.98
+            -fitness_calls: 42560
+            -num_of_generations: 2123
+            -best_fit_individual: 0.966
         -PROBLEM_DIMENSION = 2:
-            -fitness_calls: 61140
-            -num_of_generations: 3052
-            -best_fit_individual: 0.9972000000000001
+            -fitness_calls: 62340
+            -num_of_generations: 3112
+            -best_fit_individual: 0.9976
         -PROBLEM_DIMENSION = 5:           
-            -fitness_calls: 51420
-            -num_of_generations: 2566
-            -best_fit_individual: 0.990007
+            -fitness_calls: 61900
+            -num_of_generations: 3090
+            -best_fit_individual: 0.9966685
         -PROBLEM_DIMENSION = 10:           
-            -fitness_calls: 62220
-            -num_of_generations: 3106
-            -best_fit_individual: 0.99566777778
+            -fitness_calls: 56860
+            -num_of_generations: 2838
+            -best_fit_individual: 0.9955666677899999

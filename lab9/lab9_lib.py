@@ -23,9 +23,11 @@ class AbstractProblem:
 
     def __call__(self, genome):
         self._calls += 1
-        fitnesses = sorted((AbstractProblem.onemax(genome[s::self.x]) for s in range(self.x)), reverse=True)
-        val = fitnesses[0] - sum(f*(.1 ** (k+1)) for k, f in enumerate(fitnesses[1:]))
-        return val / len(genome) * self.x
+        fitnesses = sorted((AbstractProblem.onemax(genome[s :: self.x]) for s in range(self.x)), reverse=True)
+        val = sum(f for f in fitnesses if f == fitnesses[0]) - sum(
+            f * (0.1 ** (k + 1)) for k, f in enumerate(f for f in fitnesses if f < fitnesses[0])
+        )
+        return val / len(genome)
 
 def make_problem(a):
     class Problem(AbstractProblem):
