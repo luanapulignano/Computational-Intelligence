@@ -81,7 +81,7 @@ class QLearningPlayer(Player):
         self.Q[(state_key, move)] = (1 - self.alpha) * self.Q[(state_key, move)] + self.alpha * (reward + self.dis_factor * max_next_Q)
     
     def decay_epsilon(self, episode):
-        self.epsilon = max(self.epsilon * (1 / (1 + self.decay_rate * episode)), 0.01)  # Assicurati che epsilon non scenda sotto 0.01
+        self.epsilon = max(self.epsilon * (1 / (1 + self.decay_rate * episode)), 0.01)  #Make sure epsilon doesn't go below 0.01
 
     def make_move(self, game: 'Game') -> tuple[tuple[int, int], Move]:
         return self.choose_move(game.get_board(),game.getPossibleMoves(game.get_current_player()),game)
@@ -134,31 +134,24 @@ def train_qlearning_agent(qlearning_player, num_episodes,agent_index):
     for episode in range(num_episodes):
         game = Game()  
         state = game.get_board()
-
         while True:
             available_moves = game.getPossibleMoves(game.get_current_player())
             if game.get_current_player() == agent_index:
                 chosen_move = qlearning_player.choose_move(state, available_moves,game)
             else:
                 chosen_move = random.choice(available_moves)
-
             # Execute the move
             from_pos, move = chosen_move
             game.move(from_pos, move, game.get_current_player())
-    
             # Get the new state
             next_state = game.get_board()
-
             # Calculates the reward
             reward = qlearning_player.fitness(game,game.get_current_player())
-
             # Update the Q value
             qlearning_player.update_Q(state, chosen_move, reward, next_state, available_moves,game)
-
             # Check if the game is finished
             if game.check_winner() != -1:
                 break
-            
             game.current_player_idx += 1
             game.current_player_idx %= 2
             state = next_state
@@ -178,5 +171,5 @@ def test_qlearning(agent,total_games):
 
 if __name__ == '__main__':
     player1=QLearningPlayer(0.1,0.2,0.01,0.3)
-    train_qlearning_agent(player1,10,0)
+    train_qlearning_agent(player1,100,0)
     test_qlearning(player1,100)
